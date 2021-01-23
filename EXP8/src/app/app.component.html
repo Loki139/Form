@@ -1,0 +1,119 @@
+<mat-horizontal-stepper #stepper [linear]="isLinear">
+  <mat-step  label="Personal Details" [stepControl]="personal">
+    <div class="container">
+      <form [formGroup]="personal" autocomplete="off">
+        <div class="row text-center"> 
+          <div class="col">
+            <h2>Add your personal details</h2>
+              <mat-form-field appearance="outline">
+                <mat-label>Full Name</mat-label>
+                <input matInput placeholder="Placeholder" formControlName="fullName" name="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" required>
+              </mat-form-field>
+              <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                <div *ngIf="f.fullName.errors.required">Full Name is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" name="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" required>
+                <mat-option id="maleId" value="male">Male</mat-option>
+                <mat-option id="femaleId" value="female">Female</mat-option>
+                <mat-option id="othersId" value="others">Others</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+              <div *ngIf="f.gender.errors.required">Gender is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label>Country</mat-label>
+              <mat-select formControlName="country" name="country" [ngClass]="{ 'is-invalid': submitted && f.country.errors }" required>
+                <mat-option id="indiaId" value="india">India</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+              <div *ngIf="f.country.errors.required">Country is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <mat-select formControlName="state" name="state" [ngClass]="{ 'is-invalid': submitted && f.state.errors }" required>
+                <mat-option id="tamilnaduId" value="tamilnadu">TamilNadu</mat-option>
+                <mat-option id="keralaId" value="kerala">Kerala</mat-option>
+                <mat-option id="bengaloreId" value="bengalore">Bengalore</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+              <div *ngIf="f.state.errors.required">State is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label>Mobile Number</mat-label>
+              <input formControlName="mobileNumber" name="mobileNumber" type="tel" matInput placeholder="555-555-1234" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" required>
+            </mat-form-field>
+            <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required</div>
+            </div><br>
+          </div> 
+        </div>
+        <div class="text-center">
+          <button matStepperNext mat-raised-button color="warn" (click)="peresonal()" [disabled]="personal.invalid">Next</button>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step label="Company Details" [stepControl]="company">
+    <div class="container">
+      <form [formGroup]="company" autocomplete="off">
+        <div class="row text-center">
+          <div class="col">
+            <h2>Add your company details</h2>
+            <mat-form-field appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input formControlName="companyName" name="companyName" matInput placeholder="Placeholder" [ngClass]="{ 'is-invalid': submitted2 && f2.companyName.errors }" required>
+            </mat-form-field>
+            <div *ngIf="submitted2 && f2.companyName.errors" class="invalid-feedback">
+              <div *ngIf="f2.companyName.errors.required">Company Name is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label>Email ID</mat-label>
+              <input formControlName="emailId" name="emailId" matInput placeholder="Placeholder" [ngClass]="{ 'is-invalid': submitted2 && f2.emailId.errors }" required>
+            </mat-form-field>
+            <div *ngIf="submitted2 && f2.emailId.errors" class="invalid-feedback">
+              <div *ngIf="f2.emailId.errors.required">Email ID is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label >Job Title</mat-label>
+              <input formControlName="jobTitle" name="jobTitle" matInput placeholder="Placeholder" [ngClass]="{ 'is-invalid': submitted2 && f2.jobTitle.errors }" required>
+            </mat-form-field>
+            <div *ngIf="submitted2 && f2.jobTitle.errors" class="invalid-feedback">
+              <div *ngIf="f2.jobTitle.errors.required">Job Title is required</div>
+            </div><br>
+            <mat-form-field appearance="outline">
+              <mat-label >Year of Experience</mat-label>
+              <input formControlName="experience" name="experience" matInput placeholder="Placeholder" [ngClass]="{ 'is-invalid': submitted2 && f2.experience.errors }" required>
+            </mat-form-field>
+            <div *ngIf="submitted2 && f2.experience.errors" class="invalid-feedback">
+              <div *ngIf="f2.experience.errors.required">Year of Experience is required</div>
+            </div><br>
+          </div>
+        </div>
+        <div class="text-center">
+          <button matStepperPrevious mat-raised-button color="warn">Back</button>
+          <span>&nbsp;&nbsp;</span>
+          <button matStepperNext mat-raised-button color="warn" (click)="commpany()" [disabled]="company.invalid">Next</button>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step label="Success">
+    <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+      <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+        <span class="swal2-success-line-tip"></span>
+        <span class="swal2-success-line-long"></span>
+        <div class="swal2-success-ring"></div> 
+        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+       </div>
+       <div class="text-center">
+         <h1>Your profile has been created!!!</h1>
+         <h4>Data stored in Local Storage</h4>
+       </div>
+  </mat-step>
+</mat-horizontal-stepper>
